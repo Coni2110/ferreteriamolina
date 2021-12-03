@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+      <!-- bootstrap para model-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+<!-- Fonts -->
+
+ <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+<!-- Styles -->
+<!-- Estilos para tablas --> <link rel="stylesheet" href="{% static 'PROYECTOTESIS/css/estilosHome.css'%}">
+<style>
+body{
+  background: url('{% static "PROYECTOTESIS/img/bg.jfif" %}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+</style>
+
+</head>
+<body>
+  
+<div class="container">
+  <div class="row justify-content-center  ">
+    <div class="col-3 img mt-5">
+      <img src="{% static 'PROYECTOTESIS/img/logo.png'%}" alt="" height="60%">
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-5 text-center">
+
+      <div class="card " style='background:rgba(255,255,255, 0.8); border: none;'>
+        <div class="card-header" style='background:rgb(238, 139, 32); opacity: 1.2;'>
+          ABASTECIMIENTO <br>
+          GESTIÓN DE REPORTES
+        </div>
+        <div class="card-body" >
+          <form method="post">
+            {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre de usuario</label><br>
+          {{form.username}}
+        
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label> <br>
+          {{form.password}}
+        </div>
+   
+        <button type="submit" class="btn" style="background:rgb(238, 139, 32);">Enviar</button>
+      </form>
+        </div>
+      </div>
+
+      
+      
+    </div>
+  </div>
+
+</body>
+</html>

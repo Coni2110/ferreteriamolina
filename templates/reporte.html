@@ -1,0 +1,306 @@
+{% extends 'index.html' %} {% load static %} {% block contenido %}
+<section class="page-section clearfix">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+
+      {% if request.method == "POST"  %}
+
+      <div class="col-3 text-center" style='background:grey;'>
+        <h3 style="background:rgb(238, 139, 32);">Filtros</h3>
+        <br>
+        <h4 style="background:rgb(238, 139, 32);" >Stock actual</h4>
+        <div class="col">
+          <div class="form-group row">
+            <label for="" class="col-sm-4">Minimo</label>
+            <div class="col-sm-8">
+              <input type="text" id="min_mat" name="min" class="form-control form-control-sm" >
+            </div>
+          </div>
+
+        
+       
+        </div>
+      
+        <div class="col">
+          <div class="form-group row">
+            <label for="" class="col-sm-4">Máximo</label>
+            <div class="col-sm-8">
+              <input type="text" id="max_mat" name="max" class="form-control form-control-sm">
+            </div>
+          </div>
+        
+        </div>
+        <br>
+        <h3 style="background:rgb(238, 139, 32);">Opciones</h3>
+
+
+        
+        <button class="btn w-100 mb-2" id="minimo_" style='background:#dfdfdc;'>Stock menores al mínimo</button>
+    
+        <button class="btn w-100" id="recomendado_" style='background:#dfdfdc;'>Stock menores al recomendado</button>
+
+ 
+        <button class="btn btn-danger mt-4" id="reload">Eliminar filtros</button>
+      
+
+        
+      </div>
+      <div class="col-9 bg-white ">
+        {{merge|safe}}
+      </div>
+      {% else %}
+      <div class="row justify-content-center">
+        <div class="card text-center"  style='background:grey;'>
+        <div class="card-header" style='background:rgb(238, 139, 32);'>
+          <h1>Cargar los documentos.</h1>
+        </div>
+
+        <div class="card-body ">
+         
+
+          <form
+            action="{% url 'reportes' %}"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+            
+            <div class="row justify-content-center">
+              <div class="col-4 ">
+
+                <ul class="list-group list-group-flush"  style='background:#dfdfdc;'>
+                  
+                  <li class="list-group-item"  style='background:#dfdfdc;'><strong>VENTAS</strong></li>
+                  <li class="list-group-item"  style='background:#dfdfdc;'>ARCHIVO ERP:</li>
+           
+    
+                  <li class="list-group-item"  style='background:#dfdfdc;'>" ventas.xlsx "</li>
+          
+                </ul>
+
+              <input
+                type="file"
+                title="ventas"
+                name="ventas"
+                class="form-control"
+                required="required"
+              />
+              </div>
+
+                  <div class="col-4 ">
+
+                <ul class="list-group list-group-flush">
+                  
+              
+                  <li class="list-group-item"  style='background:#dfdfdc;'><strong>PROVEEDORES</strong></li>
+                  <li class="list-group-item"  style='background:#dfdfdc;'>ARCHIVO ERP:</li>
+           
+    
+                  <li class="list-group-item"  style='background:#dfdfdc;'>" proveedores.xlsx "</li>
+        
+
+                </ul>
+                 <input
+                type="file"
+                title="proveedores"
+                name="proveedores"
+                class="form-control"
+                required="required"
+              />
+              </div>
+
+               <div class="col-4">
+
+                <ul class="list-group list-group-flush">
+               
+                  <li class="list-group-item text-uppercase"  style='background:#dfdfdc;'><strong>REPOSICIÓN</strong></li>
+                  <li class="list-group-item"  style='background:#dfdfdc;'>ARCHIVO ERP:</li>
+                  <li class="list-group-item"  style='background:#dfdfdc;'>" reposicion.xlsx "</li>
+
+                </ul>
+                 <input
+                type="file"
+                title="reposicion"
+                name="reposicion"
+                class="form-control"
+                required="required"
+              />
+              </div>
+            </div>
+
+             <div class="row justify-content-center mt-3">
+              <div class="col-5  ">
+
+                <ul class="list-group list-group-flush">
+                 
+                  <li class="list-group-item"  style='background:#dfdfdc;'><strong>STOCK MINIMO</strong></li>
+                  <li class="list-group-item"  style='background:#dfdfdc;'>ARCHIVO ERP:</li>
+           
+    
+                  <li class="list-group-item"  style='background:#dfdfdc;'>" stockmin.xlsx "</li>
+                </ul>
+                 <input
+                type="file"
+                title="Stock minimo"
+                name="stock_minimo"
+                class="form-control"
+                required="required"
+              />
+              </div>
+              <div class="col-5">
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"  style='background:#dfdfdc;'><strong>STOCK ACTUAL</strong></li>
+                  <li class="list-group-item"  style='background:#dfdfdc;'>ARCHIVO ERP:</li>
+           
+    
+                  <li class="list-group-item"  style='background:#dfdfdc;'>" stockactual.xlsx "</li>
+                </ul>
+                 <input
+                type="file"
+                title="Stock actual"
+                name="stock_actual"
+                class="form-control"
+                required="required"
+              />
+              </div>
+             </div>
+             <div class="row justify-content-center mt-3">
+               <div class="col-3 mt-3">
+                    <input type="submit" class="btn" value="Enviar" style="background:rgb(238, 139, 32);">
+
+             </div>
+            </div>
+             
+              
+        
+            
+
+            
+          </form>
+        </div>
+      </div>
+      </div>
+       
+      {% endif %}
+
+     
+    </div>
+   
+  </div>
+</section>
+
+{% endblock %} {% block extra_js %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.5/r-2.2.9/rr-1.2.8/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.5/r-2.2.9/rr-1.2.8/datatables.min.js"></script>
+
+<script src="https://cdn.datatables.net/plug-ins/1.11.3/api/sum().js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"></script>
+
+<script>
+  
+
+
+  $.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min_mat = parseInt( $('#min_mat').val(), 10 );
+        var max_mat  = parseInt( $('#max_mat').val(), 10 );
+        var stock_mat  = parseFloat( data[4] ) || 0; // use data for the stock_mat  column
+
+
+        if ( ( isNaN( min_mat ) && isNaN( max_mat  ) ) ||
+             ( isNaN( min_mat ) && stock_mat  <= max_mat  ) ||
+             ( min_mat <= stock_mat    && isNaN( max_mat  ) ) ||
+             ( min_mat <= stock_mat    && stock_mat  <= max_mat )){
+            return true;
+        }
+        else {
+            return false;
+        }
+     
+      
+    }
+);
+  $(document).ready(function () {
+
+    var table = $(".dataframe").DataTable( {
+      language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json'
+    },
+      
+    dom: 'Bfrtip',
+    buttons: [
+
+        'excel',
+        'print'
+    ],
+
+
+    } );
+
+    $('#calcular').click(function() {
+      precio=table.column( 9 ).data().sum();
+      cantidad=table.column( 6).data().sum();
+      resta=table.column( 4 ).data().sum();
+        $('#total_precio').val(Intl.NumberFormat().format(precio*(cantidad)))
+    } );
+
+
+  $('#min_mat, #max_mat').keyup( function() {
+        table.draw();
+    } );
+
+   
+    $("#minimo_").click(function() {  
+
+                   
+
+            alert('Seleccionado');
+          
+            var indexes = table
+          .rows()
+          .indexes()
+          .filter( function ( value, index ) {
+            return parseInt(table.row(value).data()[4]) >= parseInt(table.row(value).data()[5]);
+          } );
+  
+     table.rows(indexes).remove().draw();
+
+            alert("Está activado");  
+
+    });  
+
+    $("#recomendado_").click(function() {  
+                   
+
+            alert('Seleccionado');
+          
+            var indexes = table
+          .rows()
+          .indexes()
+          .filter( function ( value, index ) {
+           
+            return parseInt(table.row(value).data()[4]) >= parseInt(table.row(value).data()[3]) ;
+          } );
+  
+          table.rows(indexes).remove().draw();
+
+            alert("Está activado");  
+    });  
+ 
+
+    $('#reload').click(function() {
+    location.reload();
+});
+
+
+
+  });
+
+  
+</script>
+{% endblock extra_js %}

@@ -1,0 +1,61 @@
+
+{% extends 'index.html' %} 
+{% load static %}
+
+
+ {% block contenido %}
+ <section class="page-section clearfix">
+
+ {{df|safe}}
+    <div class="container">
+      <div class="intro text-center bg-white">
+            <table class="table"  id="dataTable">
+
+            <thead>
+
+                <tr>
+                {% for col in lista %}
+                 <th>{{col}} </th>
+                {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+               
+
+                    {% for row in excel_data %}
+                     <tr>
+                     {% for cell in row %}
+                            <td data-label="Código">{{ cell}}</td>
+                         
+                              {% endfor %}
+                          </tr>
+                {% endfor %}
+
+              
+                </tbody>
+
+        </table>
+         
+     
+     </div>
+    </div>
+  </section>
+
+
+
+  {% endblock %}
+
+  {% block extra_js %}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.3/b-2.0.1/cr-1.5.5/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.3/b-2.0.1/cr-1.5.5/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+    <script>
+  $(document).ready(function() {
+    $('.dataframe').DataTable();
+} );
+  </script>
+  {% endblock extra_js %}

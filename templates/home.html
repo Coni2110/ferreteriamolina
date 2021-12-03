@@ -1,0 +1,81 @@
+
+{% extends 'index.html' %} 
+{% load static %}
+
+
+ {% block contenido %}
+ <h1 class="site-heading text-center text-white d-none d-lg-block">
+
+  <span class="site-heading-lower text-dark">GESTIÓN DE REPORTES</span>
+
+</h1>
+
+
+  <section class="page-section clearfix">
+    <div class="container-fluid">
+      <div class="row justify-content-center ">
+     
+
+        <div class="col-3">
+
+
+
+ 
+       
+
+             <div class="card m-2" style='background:rgb(238, 139, 32);'>
+        
+            <div class="card-body">
+              <h5 class="card-title">Reporte de compras</h5>
+
+              <a href={% url 'reportes' %}><button class="btn btn-danger" >Ir a compras</button></a>
+
+              
+            </div>
+          </div>
+
+   <div class="card m-2" style='background:rgb(238, 139, 32);' >
+        
+            <div class="card-body">
+              <h5 class="card-title">Traspaso entre bodegas</h5>
+
+               <a href={% url 'traspaso' %}><button class="btn btn-danger" >Ir a traspaso</button></a>
+
+
+             
+            </div>
+          </div>
+     
+          </div>
+
+         
+
+
+
+      
+    
+
+         <div class="col-9">
+
+          <div class="card bg-white m-2" >
+        
+            <div class="card-body">
+     
+
+             <p>
+               Este sistema carga los archivos exportados por su ERP y los procesa para realizar el análisis de las existencias, generando reportes de compras y traslado entre bodegas.
+             </p> 
+
+             
+            </div>
+          </div>
+
+      
+      </div>
+
+      
+    </div>
+  </section>
+ {% endblock contenido %}
+
+

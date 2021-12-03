@@ -1,0 +1,65 @@
+<html><!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+<title>Sistema de reporte</title>
+
+      <!-- Bootstrap
+  <link href="{ static "PROYECTOTESIS/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+ -->
+    <!-- bootstrap para model-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Fonts -->
+
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Styles -->
+    <!-- Estilos para tablas -->
+
+     <link rel="stylesheet" href="{% static 'PROYECTOTESIS/css/estilosHome.css'%}">
+
+   <link rel="shortcut icon" href="#" />
+  <link rel="shortcut icon" href="favicon.ico">
+     <style>
+       body{
+         background: #dfdfdc;
+       }
+     </style>
+</head>
+
+
+<body>
+
+
+   
+
+    {% include 'menu.html' %}
+
+ 
+
+
+
+    
+   <!-- Heading -->
+  {% block contenido %}{% endblock contenido %}
+
+
+    <!-- Reporte orden de compra -->
+
+    <!-- Footer -->
+
+
+
+    <!-- Bootstrap -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+{% block extra_js %}{% endblock extra_js %}
+
+</html>
